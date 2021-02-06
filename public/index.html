@@ -6,11 +6,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- FontAwesome Library -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
+        <link rel="stylesheet" href="style.css">
         <title>iChat App</title>
     </head>
 
     <body>
-        <h1>iChat 💬</h1>
+        <h1 class="title">iChat 💬</h1>
 
         <!-- the name and the icon of the current user -->
         <div class="main">
@@ -48,16 +49,15 @@
             <!-- the form that sends the message -->
             <form class="message-form" id="message-form">
                 <input type="text" name="message" id="message-input" class="message-input">
-                <div class="v-divider"></div>
                 <button type="submit" class="send-button">
                     Send <span><i class="fas fa-paper-plane"></i></span>
                 </button>
             </form>
-
-            <!-- the number of the connected clients -->
-            <h3 class="clients-total" id="clients-total">
-                Total CLients: 2
-            </h3>
         </div>
+
+        <!-- the number of the connected clients -->
+        <h3 class="clients-total" id="clients-total">
+            Total CLients: 2
+        </h3>
     </body>
 </html>
