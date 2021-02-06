@@ -53,6 +53,7 @@ socket.on('chat-message', (data) => {
 })
 
 const addMessageToUI = (isOwnMessage, data) => {
+    clearFeedback()
     const element = `
         <li class="${isOwnMessage ? "message-right" : "message-left"}">
             <p class="message">
@@ -69,4 +70,52 @@ const addMessageToUI = (isOwnMessage, data) => {
 // scroll to bottom of the messages container automatically
 const scrollToBottom = () => {
     messageContainer.scrollTo(0, messageContainer.scrollHeight)
+}
+
+// if we typing a message inside the message input
+messageInput.addEventListener('focus', (e) => {
+    // emit that to the server and send the sender's name data
+    socket.emit('feedback', {
+        feedback: `✍️ ${nameInput.value} is typing a message`
+    })
+})
+
+// if we typing a message inside the message input
+messageInput.addEventListener('keypress', (e) => {
+    // emit that to the server  and send the sender's name data
+    socket.emit('feedback', {
+        feedback: `✍️ ${nameInput.value} is typing a message`
+    })
+})
+
+// if we not typing inside the message input
+messageInput.addEventListener('blur', (e) => {
+    // emit nothing to the server
+    socket.emit('feedback', {
+        feedback: ``
+    })
+})
+
+// listen to this event that a client is currently typing a message the server is broadcasting to all other clients
+socket.on('client-currently-typing', (data) => {
+    // clear any old feedback first before listening to the new one from the server
+    clearFeedback()
+    // create an element tht indicate that
+    const element = `
+        <li class="message-feedback">
+            <p class="feedback" id="feedback">
+                ${data.feedback}
+            </p>
+        </li>
+    `
+    // then add it to the messages container to all clients to see
+    messageContainer.innerHTML += element
+})
+
+// clear the typing indicator
+const clearFeedback = () => {
+    // target all li elements that has a message-feedback class and remove them
+    document.querySelectorAll('li.message-feedback').forEach(element => {
+        element.parentNode.removeChild(element)
+    })
 }

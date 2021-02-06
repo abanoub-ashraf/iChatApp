@@ -50,4 +50,10 @@ io.on('connection', (socket) => {
         // now we wanna emit it to all clients except the one who sent us this message
         socket.broadcast.emit('chat-message', data)
     })
+
+    /** the client is emitting the server that it's currently typing a message */
+    socket.on('feedback', (data) => {
+        // so now we wanna emit that to all the other clients except that one that emitted to the server
+        socket.broadcast.emit('client-currently-typing', data)
+    })
 })
