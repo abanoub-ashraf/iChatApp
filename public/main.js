@@ -11,6 +11,8 @@ const nameInput = document.getElementById('name-input')
 const messageForm = document.getElementById('message-form')
 // the body of the message
 const messageInput = document.getElementById('message-input')
+// a tone to play every time a message is received 
+const messageTone = new Audio('/message-tone.mp3')
 
 // send a new message from the submit button of this form
 messageForm.addEventListener('submit', (e) => {
@@ -48,6 +50,8 @@ const sendMessage = () => {
 socket.on('chat-message', (data) => {
     // show it in the consoles of all the windows except the one that sent the message
     console.log(data)
+    // play the mp3 file when a message is received
+    messageTone.play()
     // false cause the message is coming from the server
     addMessageToUI(false, data)
 })
