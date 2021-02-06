@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- FontAwesome Library -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
+        <title>iChat App</title>
+    </head>
+
+    <body>
+        <h1>iChat 💬</h1>
+
+        <!-- the name and the icon of the current user -->
+        <div class="main">
+            <div class="name">
+                <span><i class="far fa-user"></i></span>
+                <input type="text" id="name-input" class="name-input" value="anonymous" maxlength="20">
+            </div>
+
+            <!-- the messages container -->
+            <ul class="message-container" id="message-container">
+                <!-- a left message -->
+                <li class="message-left">
+                    <p class="message">
+                        lorem ipsum
+                        <span>bluebird ● 26 July 10:40 AM</span>
+                    </p>
+                </li>
+
+                <!-- a right message -->
+                <li class="message-right">
+                    <p class="message">
+                        lorem ipsum
+                        <span>bluebird ● 26 July 10:40 AM</span>
+                    </p>
+                </li>
+
+                <!-- the typing indicator -->
+                <li class="message-feedback">
+                    <p class="feedback" id="feedback">
+                        killer is typing a message
+                    </p>
+                </li>
+            </ul>
+
+            <!-- the form that sends the message -->
+            <form class="message-form" id="message-form">
+                <input type="text" name="message" id="message-input" class="message-input">
+                <div class="v-divider"></div>
+                <button type="submit" class="send-button">
+                    Send <span><i class="fas fa-paper-plane"></i></span>
+                </button>
+            </form>
+
+            <!-- the number of the connected clients -->
+            <h3 class="clients-total" id="clients-total">
+                Total CLients: 2
+            </h3>
+        </div>
+    </body>
+</html>
