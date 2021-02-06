@@ -45,6 +45,7 @@ io.on('connection', (socket) => {
 
     /** the new message that will be emitted from the client */
     socket.on('message', (data) => {
+        // receive the message we get from the client
         console.log(data)
         // now we wanna emit it to all clients except the one who sent us this message
         socket.broadcast.emit('chat-message', data)
